@@ -15,4 +15,5 @@ class CentraleController extends AbstractController
     {
         return $this->render('centrale/AllUsersMainpage.html.twig');
     }
+
 }

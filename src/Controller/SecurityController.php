@@ -52,7 +52,7 @@ class SecurityController extends AbstractController
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
         if (($user->getRole() == "apprenant") and ($user->getStatus() == "True"))
-            return $this->render('centrale/AllUsersMainpage.html.twig');
+            return $this->render('users_services/HomeUsersAfterLogin.twig');
         else if (($user->getRole() == "apprenant") and ($user->getStatus() == "False") and ($user->getCodesecurity() > 1))
             return $this->render('centrale/AllUsersMainpage.html.twig');
 
