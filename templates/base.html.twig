@@ -1,19 +1,169 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+
+<!-- Mirrored from prium.github.io/Baikal-v2/index-classic.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Jul 2021 15:18:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Baikal | Create Beautiful Website</title>
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.html">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i%7cMuli:400,600,700,800,900" rel="stylesheet">
+    <link href="assets/css/theme.css" rel="stylesheet">
+</head>
+
+<body>
+<!-- ===============================================-->
+<!--    Main Content-->
+<!-- ===============================================-->
+<main class="main" id="top">
+    <div class="min-vh-100 d-flex flex-center bg-black position-absolute w-100" id="preloader">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg font-weight-semi-bold fs--1 navbar-dark py-0 navbar-theme fixed-top" style="letter-spacing:0.01em;">
+        <div class="container"><a class="navbar-brand" href="index.html"><img src="assets/img/logo-baikal.png" alt="logo" width="123" /></a><button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarStandard">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown dropdown-on-hover mt-3 mt-lg-0"><a class="nav-link dropdown-toggle text-300" id="navbarDropdownHome" href="#!" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Homes<span class="fas fa-chevron-down d-inline-block" data-fa-transform="shrink-4 right-3"></span></a>
+                        <div class="dropdown-menu fs--1" aria-labelledby="navbarDropdownHome"><a class="dropdown-item text-600 font-weight-bold" href="index.html">Default</a><a class="dropdown-item text-600 font-weight-bold" href="index-classic.html">Classic</a><a class="dropdown-item text-600 font-weight-bold" href="home-youtube-video.html">Video Full height</a><a class="dropdown-item text-600 font-weight-bold" href="home-video-classic.html">Video Classic</a><a class="dropdown-item text-600 font-weight-bold" href="home-slider.html">Home Slider</a><a class="dropdown-item text-600 font-weight-bold" href="home-slider-classic.html">Slider Classic</a></div>
+                    </li>
+                    <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle text-300" id="navbarDropdownDAbout" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About<span class="fas fa-chevron-down d-inline-block" data-fa-transform="shrink-4 right-3"></span></a>
+                        <div class="dropdown-menu fs--1" aria-labelledby="navbarDropdownDAbout"><a class="dropdown-item text-600 font-weight-bold" href="about/what-we-do.html">What we do</a><a class="dropdown-item text-600 font-weight-bold" href="about/projects.html">Projects</a><a class="dropdown-item text-600 font-weight-bold" href="about/partners.html">Partners</a><a class="dropdown-item text-600 font-weight-bold" href="about/contact.html">Contact</a></div>
+                    </li>
+                    <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link dropdown-toggle text-300" id="navbarDropdownNews" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News<span class="fas fa-chevron-down d-inline-block" data-fa-transform="shrink-4 right-3"></span></a>
+                        <div class="dropdown-menu fs--1" aria-labelledby="navbarDropdownNews"><a class="dropdown-item text-600 font-weight-bold" href="news/archive.html">Archive</a><a class="dropdown-item text-600 font-weight-bold" href="news/standard.html">Standard</a><a class="dropdown-item text-600 font-weight-bold" href="news/featured.html">Featured</a><a class="dropdown-item text-600 font-weight-bold" href="news/slider.html">Slider</a></div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-300 pr-4" href="elements.html" role="button">Elements</a></li>
+                    <li class="nav-item py-2 py-lg-0"><button class="btn btn-sm btn-outline-light rounded-capsule fs--1 font-weight-extra-bold">Purchase</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+
+    <section class="py-0 overflow-hidden" data-zanim-timeline='{"delay":0}' data-zanim-trigger="scroll">
+        <div class="bg-holder overlay" style="background-image:url(../public/assets/header-01.jpg);" data-zanim-xs='{"delay":0,"ease":"Sine.easeInOut","duration":1,"from":{"scale":1.05,"alpha":0},"to":{"scale":1,"alpha":1}}'></div>
+        <!--/.bg-holder-->
+        <div class="container">
+            <div class="row flex-center min-vh-75 ">
+                <div class="col-auto text-center">
+                    <p class="font-italic text-white fs-1 text-base mb-3" data-zanim-xs='{"delay":0.7,"duration":0.7,"ease":"Power2.easeOut","from":{"y":20,"opacity":0},"to":{"y":0,"opacity":1}}'>Success Stories</p>
+                    <h2 class="text-uppercase text-white font-weight-extra-bold fs-3 fs-md-3 fs-lg-4 ls-1 mb-7" data-zanim-xs='{"delay":0,"duration":1,"ease":"Sine.easeInOut","from":{"letterSpacing":"0.25em","opacity":0},"to":{"letterSpacing":"0.05em","opacity":1}}'>start with you</h2><button class="btn btn-primary rounded-capsule ls fs--1" data-zanim-xs='{"delay":1.2,"duration":0.7,"ease":"Power2.easeOut","from":{"y":-20,"opacity":0},"to":{"y":0,"opacity":1}}'>Learn More</button>
+                </div>
+            </div><a class="text-white down-arrow" href="#secondsection" data-fancyscroll="data-fancyscroll"><span class="indicator-home-arrow" data-zanim-xs='{"ease":"Back.easeOut","delay":1.95,"duration":0.4,"from":{"y":0,"opacity":0},"to":{"y":16,"opacity":1}}'></span><span class="indicator-home-arrow" data-zanim-xs='{"ease":"Back.easeOut","delay":2.2,"duration":0.4,"from":{"y":0,"opacity":0},"to":{"y":10,"opacity":1}}'></span></a>
+        </div><!-- end of .container-->
+    </section><!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+    <section class="bg-white overflow-hidden" id="secondsection">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h3 class="pb-4 text-base fs-2 font-weight-light text-1000">A Bootstrap 4 website template for entrepreneurial community.</h3>
+                    <p class="w-xl-75 mx-auto px-3">Some of the coolest websites on earth are empowered by ThemeWagon. To continue the ambience, Baikal aims to help the rapidly growing entrepreneurial community to go online.It's loaded with many elements & features. See what you can do with it.</p>
+                    <p class="w-100 w-md-75 mx-auto"><span class="font-italic text-1000 font-weight-semi-bold">For any questions please contact</span><a class="text-primary font-weight-semi-bold font-italic" href="#"> info@yourdomain.com</a></p>
+                </div>
+            </div>
+            <div class="row justify-content-center pt-8 text-center">
+                <div class="col-md-5 col-11 mt-1"><img class="img-fluid" src="assets/img/about.jpg" alt="" />
+                    <h5 class="text-uppercase pt-4 pb-2 text-primary font-weight-extra-bold fs-0 ls">about</h5>
+                    <p>Find out about our organization, mission, our methods, and the results of our decades of advocacy.</p><a class="text-capitalize text-primary font-weight-semi-bold" href="#!">
+                        <p class="mb-6 mb-md-0">learn more ⟶</p>
+                    </a>
+                </div>
+                <div class="col-md-5 col-11 mt-1 ml-0"><img class="img-fluid" src="assets/img/action.jpg" alt="" />
+                    <h5 class="text-uppercase pt-4 pb-2 text-primary font-weight-extra-bold fs-0 ls">Portfolio</h5>
+                    <p>Check out some of our featured portfolio from many successful projects, carefully curated by us.</p><a class="text-capitalize text-primary font-weight-semi-bold mb-4 mb-md-0" href="#!">
+                        <p>See Portfolio ⟶</p>
+                    </a>
+                </div>
+            </div>
+        </div><!-- end of .container-->
+    </section><!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+    <section class="bg-1000 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="row justify-content-center"><a class="social-icon" href="#!"><span class="fa-stack fa-1x"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fab fa-twitter fa-stack-1x fa-inverse fs--1 text-1000"></i></span></a><a class="social-icon" href="#!"><span class="fa-stack fa-1x"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fab fa-instagram fa-stack-1x fa-inverse fs--1 text-1000"></i></span></a><a class="social-icon" href="#!"><span class="fa-stack fa-1x"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fab fa-pinterest fa-stack-1x fa-inverse fs--1 text-1000"></i></span></a><a class="social-icon" href="#!"><span class="fa-stack fa-1x"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fab fa-youtube fa-stack-1x fa-inverse fs--1 text-1000"></i></span></a></div>
+                </div>
+            </div>
+        </div><!-- end of .container-->
+    </section><!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+    <section class="bg-1100 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h6 class="text-400 mt-3 font-weight-bold ls">459 BROADWAY, NEW YORK<span class="ml-3">(212) 555-0123</span><span class="ml-3 mt-1 mt-md-0 d-inline-block">PLACEHOLDER@GMAIL.COM</span></h6>
+                    <p class="pt-4 mb-3 mb-0 text-700">Powered by <a class="text-700 text-decoration-none" href="#!"><span class="border-bottom border-800 border-2x" style="line-height:10px;margin-bottom:10px"> ThemeWagon</span></a></p>
+                </div>
+            </div>
+        </div><!-- end of .container-->
+    </section><!-- <section> close ============================-->
+    <!-- ============================================-->
+
+</main><!-- ===============================================-->
+<!--    End of Main Content-->
+<!-- ===============================================-->
+
+
+
+<!-- ===============================================-->
+<!--    JavaScripts-->
+<!-- ===============================================-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/lib/is/is.min.js"></script>
+<script src="assets/lib/stickyfilljs/stickyfill.min.js"></script>
+<script src="assets/lib/sticky-kit/sticky-kit.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics-->
+<script src="assets/js/theme.js"></script>
+</body>
+
+
+<!-- Mirrored from prium.github.io/Baikal-v2/index-classic.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Jul 2021 15:18:45 GMT -->
 </html>
