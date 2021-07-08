@@ -51,15 +51,11 @@ class SecurityController extends AbstractController
     {
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        if (($user->getRole() == "apprenant") and ($user->getStatus() == "True"))
+        if (($user->getRole() == "users") and ($user->getStatus() == "True"))
             return $this->render('users_services/HomeUsersAfterLogin.twig');
-        else if (($user->getRole() == "apprenant") and ($user->getStatus() == "False") and ($user->getCodesecurity() > 1))
-            return $this->render('centrale/AllUsersMainpage.html.twig');
 
-        else if ($user->getRole() == "professeur")
-            return $this->redirectToRoute('AfficheEmploiProf');
         else if ($user->getRole() == "admin")
-            return $this->redirectToRoute('stati');
+            return $this->redirectToRoute('admins_crud_index');
 
         else
             $this->addFlash(

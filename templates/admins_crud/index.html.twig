@@ -1,0 +1,46 @@
+{% extends 'admin_services/backendAdmin.html.twig' %}
+{% block central %}
+    <div class="container-xl">
+    <h1>Users index</h1>
+
+        <table id="articles" class="table  table-bordered table-hover table-dark   ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Role</th>
+                <th>Prenom</th>
+                <th>Photo</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.photo }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.status }}</td>
+                <td>
+                    <a href="{{ path('admins_crud_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('admins_crud_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admins_crud_new') }}">Create new</a>
+</div>
+{% endblock %}
