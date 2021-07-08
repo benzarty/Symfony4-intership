@@ -1,13 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_services/backendAdmin.html.twig' %}
+{% block central %}
 
-{% block title %}Edit Users{% endblock %}
+    <!-- Content here -->
+    <div class="container-xl">
+        <h1 style="text-align: center;"><span  style="color: #ffffff;"><strong>MODIFIER UN Admin</strong></span></h1>
+        <div class="content-header">
+            {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div></div>
 
-{% block body %}
-    <h1>Edit Users</h1>
 
-    {{ include('admins_crud/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('admins_crud_index') }}" class="btn btn-info">back to list</a>
-
-    {{ include('admins_crud/_delete_form.html.twig') }}
 {% endblock %}

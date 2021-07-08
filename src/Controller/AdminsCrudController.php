@@ -13,11 +13,27 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+
+
+
+
 /**
  * @Route("/admins/crud")
  */
 class AdminsCrudController extends AbstractController
 {
+    /**
+     * @Route("/admin/services", name="admin_services")
+     */
+    public function indexhome(): Response
+    {
+        return $this->render('admin_services/index.html.twig');
+    }
+
+
+
+
+
     /**
      * @Route("/GetAdmins", name="admins_crud_index", methods={"GET"})
      */
@@ -25,34 +41,12 @@ class AdminsCrudController extends AbstractController
     {
         $users = $this->getDoctrine()
             ->getRepository(Users::class)
-            ->findAll();
+            ->findBy(['role' => 'admin']);
 
         return $this->render('admins_crud/index.html.twig', [
             'users' => $users,
         ]);
     }
-
-    /**
-     * @Route("/new", name="admins_crud_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $user = new Users();
-        $form = $this->createForm(Users1Type::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admins_crud_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('admins_crud/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);}
 
 
     /**
@@ -63,7 +57,7 @@ class AdminsCrudController extends AbstractController
     {
         $article = new Users();
         $form = $this->createForm(UsersType::class, $article);
-        $article->setRole("apprenant");
+        $article->setRole("admin");
         $form->add('ajouter', SubmitType::class);
         $article->setStatus("True");
         $form->handleRequest($request);
@@ -81,7 +75,7 @@ class AdminsCrudController extends AbstractController
             $article->setPhoto($fileName);
 
 
-            $article->setCodesecurity(1);
+
 
             $hash = $encoder->encodePassword($article, $article->getPassword());
             $article->setPassword($hash);
@@ -102,25 +96,6 @@ class AdminsCrudController extends AbstractController
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * @Route("/{id}", name="admins_crud_show", methods={"GET"})
      */
@@ -131,25 +106,60 @@ class AdminsCrudController extends AbstractController
         ]);
     }
 
+
+
+
+
     /**
      * @Route("/{id}/edit", name="admins_crud_edit", methods={"GET","POST"})
+     * Method({"GET", "POST"})
      */
-    public function edit(Request $request, Users $user): Response
+    public function editAdmin(Request $request, $id, UserPasswordEncoderInterface $encoder)
     {
-        $form = $this->createForm(Users1Type::class, $user);
+        $article = $this->getDoctrine()->getRepository(Users::class)->find($id);
+
+        $form = $this->createForm(UsersType::class, $article);
+        $form->add('Modifier', SubmitType::class);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $article->setCodesecurity(1);
 
-            return $this->redirectToRoute('admins_crud_index', [], Response::HTTP_SEE_OTHER);
+            $hash = $encoder->encodePassword($article, $article->getPassword());
+            $article->setPassword($hash);
+
+
+            $file = $form->get('photo')->getData();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('imagedirectory'), $fileName);
+
+
+            $article->setPhoto($fileName);
+
+
+            $article = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admins_crud_index');
         }
 
-        return $this->render('admins_crud/edit.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('admins_crud/edit.html.twig', ['form' => $form->createView()]);
     }
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @Route("/{id}", name="admins_crud_delete", methods={"POST"})
