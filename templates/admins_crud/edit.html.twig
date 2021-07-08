@@ -7,7 +7,7 @@
 
     {{ include('admins_crud/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('admins_crud_index') }}">back to list</a>
+    <a href="{{ path('admins_crud_index') }}" class="btn btn-info">back to list</a>
 
     {{ include('admins_crud/_delete_form.html.twig') }}
 {% endblock %}

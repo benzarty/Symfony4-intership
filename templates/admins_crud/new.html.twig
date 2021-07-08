@@ -1,11 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_services/backendAdmin.html.twig' %}
+{% block central %}
 
-{% block title %}New Users{% endblock %}
 
-{% block body %}
-    <h1>Create new Users</h1>
+    <!-- Content here -->
+    <div class="container-xl">
+        <h1 style="text-align: center;"><span  style="color: #ffffff;"><strong>AJOUTER UN Admin</strong></span></h1>
+        <div class="content-header">
+            {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div></div>
 
-    {{ include('admins_crud/_form.html.twig') }}
-
-    <a href="{{ path('admins_crud_index') }}">back to list</a>
 {% endblock %}

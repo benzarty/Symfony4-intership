@@ -59,7 +59,6 @@ class Users implements UserInterface
     private $role;
 
 
-
     /**
      * @var string
      *
@@ -107,7 +106,6 @@ class Users implements UserInterface
      * @Assert\EqualTo(propertyPath="confirmPassword",message="votre mot de passe doit etre identique bro")
      */
     private $password;
-
 
 
 

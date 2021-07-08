@@ -1,11 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_services/backendAdmin.html.twig' %}
+{% block central %}
 
-{% block title %}Users{% endblock %}
 
-{% block body %}
-    <h1>Users</h1>
+   <div class="container">
 
-    <table class="table">
+       <table id="articles" class="table  table-bordered table-hover table-dark   ">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -31,10 +30,7 @@
                 <th>Email</th>
                 <td>{{ user.email }}</td>
             </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
+
             <tr>
                 <th>Status</th>
                 <td>{{ user.status }}</td>
@@ -47,4 +43,5 @@
     <a href="{{ path('admins_crud_edit', {'id': user.id}) }}">edit</a>
 
     {{ include('admins_crud/_delete_form.html.twig') }}
+   </div>
 {% endblock %}

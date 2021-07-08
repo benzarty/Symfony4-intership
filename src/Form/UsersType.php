@@ -13,14 +13,14 @@ class UsersType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('nom')
 
-            ->add('prenom')
-            ->add('photo',FileType::class, ['mapped' =>false])
-            ->add('email')
-            ->add('password',PasswordType::class)
-            ->add('confirmPassword',PasswordType::class)
+           $builder
+               ->add('nom')
+               ->add('prenom')
+               ->add('photo',FileType::class, ['mapped' =>false])
+               ->add('email')
+               ->add('password',PasswordType::class)
+               ->add('confirmPassword',PasswordType::class)
 
         ;
     }

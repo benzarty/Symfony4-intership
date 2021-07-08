@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Users;
+use App\Form\ApprenantType;
 use App\Form\Users1Type;
+use App\Form\UsersType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/admins/crud")
@@ -48,8 +52,74 @@ class AdminsCrudController extends AbstractController
         return $this->render('admins_crud/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
-        ]);
+        ]);}
+
+
+    /**
+     * @Route("/Apprenant/new", name="new_admin")
+     * Method({"GET", "POST"})
+     */
+    public function newAdmin(Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $article = new Users();
+        $form = $this->createForm(UsersType::class, $article);
+        $article->setRole("apprenant");
+        $form->add('ajouter', SubmitType::class);
+        $article->setStatus("True");
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            //$file = $article->getPhoto();
+            $file = $form->get('photo')->getData();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('imagedirectory'), $fileName);
+
+
+            $article->setPhoto($fileName);
+
+
+            $article->setCodesecurity(1);
+
+            $hash = $encoder->encodePassword($article, $article->getPassword());
+            $article->setPassword($hash);
+
+
+            $article = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admins_crud_index');
+        }
+        return $this->render('admins_crud/new.html.twig', ['form' => $form->createView()]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @Route("/{id}", name="admins_crud_show", methods={"GET"})
