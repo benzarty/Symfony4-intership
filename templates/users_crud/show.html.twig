@@ -2,10 +2,10 @@
 {% block central %}
 
 
-   <div class="container">
+    <div class="container">
 
-       <table id="articles" class="table  table-bordered table-hover table-dark   ">
-        <tbody>
+        <table id="articles" class="table  table-bordered table-hover table-dark   ">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ user.id }}</td>
@@ -30,15 +30,19 @@
                 <th>Email</th>
                 <td>{{ user.email }}</td>
             </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ user.status }}</td>
+            </tr>
 
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <a href="{{ path('admins_crud_index') }}" class="btn btn-info">Back</a>
+        <a href="{{ path('Getusers') }}" class="btn btn-info">Back</a>
 
-    <a href="{{ path('admins_crud_edit', {'id': user.id}) }}" class="btn btn-secondary">edit</a>
+        <a href="{{ path('editUsers', {'id': user.id}) }}" class="btn btn-secondary">edit</a>
 
 
-   </div>
+    </div>
 {% endblock %}
