@@ -1,0 +1,62 @@
+{% extends 'admin_services/backendAdmin.html.twig' %}
+{% block central %}
+    <div class="container-xl">
+        <h1 style="text-align: center;"><span style="color: #ffffff;"><strong>GESTIONS DES Admins</strong></span></h1>
+        <div class="float-sm-right"> <a href="{{ path('new_admin') }}" type="button"  ><i class="fas fa-plus-circle fa-2x"></i> </a></div>
+
+        <form method="post" >
+            <div class="input-group mb-3">
+
+                <input type="text" class="form-control" name="search" placeholder="Recipient's username" >
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    </b>
+
+
+    <table id="articles" class="table  table-bordered table-hover table-dark   ">
+        <thead>
+        <tr>
+
+            <th>Nom</th>
+
+            <th>Prenom</th>
+            <th>Photo</th>
+            <th>Email</th>
+
+
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.libele }}</td>
+                <td>{{ user.categorie }}</td>
+
+                <td>
+                    <a href="{{ path('admins_crud_show', {'id': user.id}) }}" class="btn btn-secondary">show</a>
+                    <a href="{{ path('admins_crud_edit', {'id': user.id}) }}" class="btn btn-info">edit</a>
+                    <form method="post" action="{{ path('admins_crud_delete', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    </div>
+{% endblock %}
