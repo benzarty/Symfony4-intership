@@ -23,14 +23,14 @@ class Offre
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datedebut", type="date", nullable=false)
+     * @ORM\Column(name="datedebut", type="date", nullable=true)
      */
     private $datedebut;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datefin", type="date", nullable=false)
+     * @ORM\Column(name="datefin", type="date", nullable=true)
      */
     private $datefin;
 
@@ -40,7 +40,7 @@ class Offre
     /**
      * @var string
      *
-     * @ORM\Column(name="libele", type="string", length=50, nullable=false)
+     * @ORM\Column(name="libele", type="string", length=50, nullable=true)
      */
     private $libele;
 
@@ -49,14 +49,14 @@ class Offre
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=50, nullable=false)
+     * @ORM\Column(name="categorie", type="string", length=50, nullable=true)
      */
     private $categorie;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=50, nullable=false)
+     * @ORM\Column(name="description", type="string", length=50, nullable=true)
      */
     private $description;
 
@@ -119,7 +119,7 @@ class Offre
     /**
      * @return string
      */
-    public function getLibele(): string
+    public function getLibele(): ?string
     {
         return $this->libele;
     }
@@ -132,10 +132,12 @@ class Offre
         $this->libele = $libele;
     }
 
+
+
     /**
      * @return string
      */
-    public function getCategorie(): string
+    public function getCategorie(): ?string
     {
         return $this->categorie;
     }
@@ -151,7 +153,7 @@ class Offre
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
