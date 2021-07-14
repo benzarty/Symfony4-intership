@@ -1,0 +1,42 @@
+{% extends 'admin_services/backendAdmin.html.twig' %}
+{% block central %}
+
+
+   <div class="container">
+
+       <table id="articles" class="table  table-bordered table-hover table-dark   ">
+        <tbody>
+
+                <th>Libele</th>
+                <td>{{ user.libele }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ user.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Date Debut</th>
+                <td>{{ user.datedebut | date}}</td>
+            </tr>
+
+            <tr>
+                <th>Date Fin</th>
+                <td>{{ user.datefin | date }}</td>
+            </tr>
+
+                <tr>
+                    <th>Description</th>
+                    <td>{{ user.description }}</td>
+                </tr>
+
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('GetOffre') }}" class="btn btn-info">Back</a>
+
+    <!--<a href="{{ path('admins_crud_edit', {'id': user.id}) }}" class="btn btn-secondary">edit</a> -->
+
+
+   </div>
+{% endblock %}

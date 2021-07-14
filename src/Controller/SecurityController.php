@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
+use App\Form\UsersType;
 use App\Repository\ReclamationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -64,6 +67,49 @@ class SecurityController extends AbstractController
 
 
     }
+    /**
+     * @Route("/RegisterUsersnow", name="RegisterUsersnow")
+     * Method({"GET", "POST"})
+     */
+    public function registerusernow(Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $article = new Users();
+        $form = $this->createForm(UsersType::class, $article);
+        $article->setRole("admin");
+        $form->add('ajouter', SubmitType::class);
+        $article->setStatus("True");
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            //$file = $article->getPhoto();
+            $file = $form->get('photo')->getData();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('imagedirectory'), $fileName);
+
+
+            $article->setPhoto($fileName);
+
+
+
+
+            $hash = $encoder->encodePassword($article, $article->getPassword());
+            $article->setPassword($hash);
+
+
+            $article = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+            $this->addFlash('info', 'Your request has been added succesfully !!');
+            return $this->redirectToRoute('RegisterUsersnow');
+        }
+        return $this->render('users_services/RegisterUsers.html.twig', ['form' => $form->createView()]);
+    }
+
 
 
 }
