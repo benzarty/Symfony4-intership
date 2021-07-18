@@ -119,9 +119,9 @@ class OffreCrudController extends AbstractController
         return $this->redirectToRoute('GetOffre', [], Response::HTTP_SEE_OTHER);
     }
     /**
-     * @Route("/seecondidatures/{id}", name="seecondidatures", methods={"GET","POST"})
+     * @Route("/seecondidatures", name="seecondidatures", methods={"GET","POST"})
      */
-    public function indexcondidature($id): Response
+    public function indexcondidature(): Response
     {
 
         $users = $this->getDoctrine()->getRepository(Offre::class)->findnonull();

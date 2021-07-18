@@ -46,7 +46,6 @@
                 <td style="text-align: center">
                     <a href="{{ path('offre_show', {'id': user.id}) }}" class="btn btn-secondary">show Detail</a>
                     <a href="{{ path('edditoffre', {'id': user.id}) }}" class="btn btn-info">edit</a>
-                    <a href="{{ path('seecondidatures', {'id': user.id}) }}" class="btn btn-success">See Condidatures</a>
 
                     <form method="post" action="{{ path('offre_crud_delete', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
