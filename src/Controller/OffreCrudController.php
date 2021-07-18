@@ -81,7 +81,7 @@ class OffreCrudController extends AbstractController
      */
     public function edditoffre(Request $request, $id, UserPasswordEncoderInterface $encoder)
     {
-        $article = $this->getDoctrine()->getRepository(Users::class)->find($id);
+        $article = $this->getDoctrine()->getRepository(Offre::class)->find($id);
 
         $form = $this->createForm(OffreAdminType::class, $article);
         $form->add('Modifier', SubmitType::class);
@@ -118,4 +118,21 @@ class OffreCrudController extends AbstractController
 
         return $this->redirectToRoute('GetOffre', [], Response::HTTP_SEE_OTHER);
     }
+    /**
+     * @Route("/seecondidatures/{id}", name="seecondidatures", methods={"GET","POST"})
+     */
+    public function indexcondidature($id): Response
+    {
+
+        $users = $this->getDoctrine()->getRepository(Offre::class)->findnonull();
+
+
+
+
+        return $this->render('offre_crud/SeeCondidature.html.twig', [
+            'users' => $users,
+        ]);
+    }
+
+
 }

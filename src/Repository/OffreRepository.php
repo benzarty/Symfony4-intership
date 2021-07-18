@@ -47,4 +47,15 @@ class OffreRepository extends ServiceEntityRepository
         ;
     }
     */
+    function findnonull(){
+
+        return $this->createQueryBuilder('c')
+            ->where('c.idclient>:not')
+            ->setParameter('not','1')
+
+
+            // ->OrderBy('c.CreationDate','ASC')
+          ->getQuery()->getResult();
+    }
+
 }
