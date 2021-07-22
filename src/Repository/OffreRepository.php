@@ -51,7 +51,7 @@ class OffreRepository extends ServiceEntityRepository
 
         return $this->createQueryBuilder('c')
             ->where('c.idclient>:not')
-            ->setParameter('not','1')
+            ->setParameter('not','0')
 
 
             // ->OrderBy('c.CreationDate','ASC')

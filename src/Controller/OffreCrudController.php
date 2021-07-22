@@ -134,5 +134,28 @@ class OffreCrudController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("condidatureeee_crud_delete/{id}", name="condidatureeee_crud_delete", methods={"POST"})
+     */
+    public function deleteCondidature(Request $request, Offre $user): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($user);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('seecondidatures', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/DetailCondidature/{id}", name="DetailCondidature", methods={"GET"})
+     */
+    public function DetailCondidature(Offre $user): Response
+    {
+        return $this->render('offre_crud/show.html.twig', [
+            'user' => $user,
+        ]);
+    }
 
 }
