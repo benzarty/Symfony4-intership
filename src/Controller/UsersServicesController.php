@@ -24,14 +24,6 @@ class UsersServicesController extends AbstractController
 
 
 
-    /**
-     * @Route("/users/services", name="users_services")
-     */
-    public function index(): Response
-    {
-        return $this->render('users_services/HomeUsersAfterLogin.twig'
-        );
-    }
 
 
 

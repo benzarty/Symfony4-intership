@@ -18,6 +18,26 @@ use Symfony\Component\Serializer\Serializer;
 
 class SecurityController extends AbstractController
 {
+
+    /**
+     * @Route("/", name="homee")
+     */
+    public function indexhome(): Response
+    {
+        return $this->render('centrale/AllUsersMainpage.html.twig');
+    }
+
+
+
+    /**
+     * @Route("/users/services", name="users_services")
+     */
+    public function index(): Response
+    {
+        return $this->render('users_services/HomeUsersAfterLogin.twig'
+        );
+    }
+
     /**
      * @Route("/login", name="login")
      * @param Request $request

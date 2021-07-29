@@ -43,9 +43,6 @@ class OffreCrudController extends AbstractController
         ]);
     }
 
-
-
-
     /**
      * @Route("/OffreNew", name="OffreNew")
      * Method({"GET", "POST"})
@@ -104,9 +101,8 @@ class OffreCrudController extends AbstractController
 
         return $this->render('offre_crud/edit.html.twig', ['form' => $form->createView()]);
     }
-
     /**
-     * @Route("/{id}", name="offre_crud_delete", methods={"POST"})
+     * @Route("offre_crud_delete/{id}", name="offre_crud_delete", methods={"POST"})
      */
     public function delete(Request $request, Offre $user): Response
     {
@@ -157,5 +153,6 @@ class OffreCrudController extends AbstractController
             'user' => $user,
         ]);
     }
+
 
 }
