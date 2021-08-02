@@ -7,44 +7,41 @@
 
     <!-- Content here -->
     <div class="container-xl">
-        <h1 style="text-align: center;"><span  style="color: #ffffff;"><strong>MODIFIER Profil</strong></span></h1>
+        <h1 style="text-align: center;"><span  style="color: #ffffff;"><strong>Detail Offre</strong></span></h1>
         <div class="content-header">
             <table id="articles" class="table  table-bordered table-hover table-dark   ">
-                <thead>
-                <tr>
-
-                    <th>libele</th>
-
-                    <th>categorie</th>
-                    <th>datedebut</th>
-                    <th>datefin</th>
-
-
-                    <th>actions</th>
-                </tr>
-                </thead>
                 <tbody>
-                {% for user in users %}
-                    <tr>
-                        <td>{{ user.libele }}</td>
-                        <td>{{ user.categorie }}</td>
-                        <td>{{ user.datedebut | date}}</td>
-                        <td>{{ user.datefin | date }}</td>
+                <tr>
+                    <th>libele</th>
+                    <td>{{ users.libele }}</td>
+                </tr>
+                <tr>
+                    <th>categorie</th>
+                    <td>{{ users.categorie }}</td>
+                </tr>
+                <tr>
+                    <th>datedebut</th>
+                    <td>{{ users.datedebut | date }}</td>
+                </tr>
+                <tr>
+                    <th>datefin</th>
+                    <td>{{ users.datefin | date }}</td>
+                </tr>
+                <tr>
+                    <th>description</th>
+                    <td>{{ users.description }}</td>
+                </tr>
 
-                        <td>
-                            <a  class="btn btn-info" href="{{ path('showdetailuseroffre', {'id': user.id}) }}">Show Detail</a>
 
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="9">no records found</td>
-                    </tr>
-                {% endfor %}
+
+
                 </tbody>
             </table>
 
-        </div></div>
+        </div>
+        <button type="button" class="btn btn-outline-success float-right" style="alignment: left">Postuler</button>
+
+    </div>
 
 
 

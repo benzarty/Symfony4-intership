@@ -39,7 +39,7 @@ class UsersServicesController extends AbstractController
     {
         $users = $this->getDoctrine()
             ->getRepository(Offre::class)
-            ->findBy(['id'=> $id]);
+            ->findOneBy(['id'=> $id]);
         return $this->render('users_services/ShowDetailOffre.html.twig', [
             'users' => $users,
         ]);
