@@ -1,0 +1,52 @@
+{% extends 'users_services/baseFrontUserAfterlogin.html.twig' %}
+
+{% block body %}
+
+
+
+
+    <!-- Content here -->
+    <div class="container-xl">
+        <h1 style="text-align: center;"><span  style="color: #ffffff;"><strong>MODIFIER Profil</strong></span></h1>
+        <div class="content-header">
+            <table id="articles" class="table  table-bordered table-hover table-dark   ">
+                <thead>
+                <tr>
+
+                    <th>libele</th>
+
+                    <th>categorie</th>
+                    <th>datedebut</th>
+                    <th>datefin</th>
+
+
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.libele }}</td>
+                        <td>{{ user.categorie }}</td>
+                        <td>{{ user.datedebut | date}}</td>
+                        <td>{{ user.datefin | date }}</td>
+
+                        <td>
+                            <a  class="btn btn-info" href="{{ path('showdetailuseroffre', {'id': user.id}) }}">Show Detail</a>
+
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="9">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div></div>
+
+
+
+
+{% endblock %}
