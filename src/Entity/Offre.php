@@ -1,9 +1,16 @@
 <?php
 
 namespace App\Entity;
-
+use phpDocumentor\Reflection\Types\Integer;
 use App\Repository\OffreRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Repository\UsersRepository;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=OffreRepository::class)
@@ -60,7 +67,13 @@ class Offre
      */
     private $description;
 
-
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="cv", type="string", length=300, nullable=true)
+     * @Assert\File(mimeTypes={"image/jpeg"},groups = {"create"})
+     */
+    private $cv;
 
 
 
@@ -116,6 +129,9 @@ class Offre
         return $this;
     }
 
+
+
+
     /**
      * @return string
      */
@@ -164,6 +180,18 @@ class Offre
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    public function getCv(): ?string
+    {
+        return $this->cv;
+    }
+
+    public function setCv(?string $cv): self
+    {
+        $this->cv = $cv;
+
+        return $this;
     }
 
 

@@ -1,0 +1,12 @@
+{% extends 'users_services/baseFrontUserAfterlogin.html.twig' %}
+
+{% block body %}
+    <div class="container-xl">
+        <h1 style="text-align: center;"><span  style="color: #ffffff;"><strong>Upload Cv</strong></span></h1>
+        <div class="content-header">
+            {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div></div>
+
+{% endblock %}
