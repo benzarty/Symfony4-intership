@@ -28,12 +28,21 @@
                     <th>Description</th>
                     <td>{{ user.description }}</td>
                 </tr>
+                <tr>
+                    <th>Info client </th>
+                    <td>{{ user.idclient }}</td>
+                </tr>
+                <tr>
+                    <th>Cv</th>
+                    <td><a href="{{ asset('uploads/' ~ user.cv) }}" class="btn btn-success">Show Cv</a></td>
+                </tr>
+
 
 
         </tbody>
     </table>
 
-    <a href="{{ path('GetOffre') }}" class="btn btn-info">Back</a>
+    <a href="{{ path('seecondidatures') }}" class="btn btn-info">Back</a>
 
     <!--<a href="{{ path('admins_crud_edit', {'id': user.id}) }}" class="btn btn-secondary">edit</a> -->
 

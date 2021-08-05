@@ -47,4 +47,24 @@ class UsersRepository extends ServiceEntityRepository
         ;
     }
     */
+    function SearchAdmin($nsc) //requette en plusieur etape
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.nom LIKE :nom')
+            ->setParameter('nom','%'.$nsc.'%')
+            ->andWhere('s.role LIKE :admin')
+            ->setParameter('admin','admin')   //label valeur
+            ->getQuery()
+            ->getResult();
+    }
+    function SearchUsers($nsc) //requette en plusieur etape
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.nom LIKE :nom')
+            ->setParameter('nom','%'.$nsc.'%')
+            ->andWhere('s.role LIKE :admin')
+            ->setParameter('admin','users')   //label valeur
+            ->getQuery()
+            ->getResult();
+    }
 }

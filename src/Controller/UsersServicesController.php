@@ -33,6 +33,7 @@ class UsersServicesController extends AbstractController
     }
 
 
+
     /**
      * @Route("/showdetailuseroffre/{id}", name="showdetailuseroffre", methods={"GET"})
      */
@@ -103,8 +104,6 @@ class UsersServicesController extends AbstractController
 
 
     }
-
-
 
 
 

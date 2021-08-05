@@ -1,0 +1,21 @@
+{% extends 'admin_services/backendAdmin.html.twig' %}
+{% block central %}
+
+
+    <!-- Content here -->
+    <div class="container-xl">
+        <h1 style="text-align: center;"><span  style="color: #ffffff;"><strong>Update Profile</strong></span></h1>
+        {% for message in app.flashes('info') %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+
+
+        {% endfor %}
+        <div class="content-header">
+            {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div></div>
+
+{% endblock %}

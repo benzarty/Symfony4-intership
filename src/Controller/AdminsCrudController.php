@@ -6,6 +6,7 @@ use App\Entity\Users;
 use App\Form\ApprenantType;
 use App\Form\Users1Type;
 use App\Form\UsersType;
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,8 +31,55 @@ class AdminsCrudController extends AbstractController
         return $this->render('admin_services/index.html.twig');
     }
 
+    /**
+     * @Route("/profilsettingsadmin", name="profilsettingsadmin")
+     * Method({"GET", "POST"})
+     */
+    public function profilsettingsadmin(Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $article = $this->getDoctrine()->getRepository(Users::class)->find($user->getId());
+
+        $form = $this->createForm(UsersType::class, $article);
+        $form->add('Modifier Profil', SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('photo')->getData();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('imagedirectory'), $fileName);
+
+            $hash = $encoder->encodePassword($article, $article->getPassword());
+            $article->setPassword($hash);
+            $article->setPhoto($fileName);
 
 
+            $article = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+            $this->addFlash('info', 'Your Profile has been updated succesfully !!');
+
+            return $this->redirectToRoute('profilsettingsadmin');
+        }
+
+        return $this->render('admins_crud/ModifProfil.html.twig', ['form' => $form->createView()]);
+    }
+    /**
+     * @param UsersRepository $repo
+     * @param Request $request
+     * @Route("searchadmin", name="searchadmin")
+     */
+    public function RechercheAdmingo(UsersRepository $repo, Request $request)
+    {
+        $data = $request->get('search');
+        $student = $repo->SearchAdmin($data);
+        return $this->render('admins_crud/index.html.twig', ['users' => $student]);
+
+    }
 
 
     /**
@@ -174,4 +222,6 @@ class AdminsCrudController extends AbstractController
 
         return $this->redirectToRoute('admins_crud_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

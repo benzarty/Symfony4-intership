@@ -4,7 +4,7 @@
         <h1 style="text-align: center;"><span style="color: #ffffff;"><strong>GESTIONS DES Admins</strong></span></h1>
         <div class="float-sm-right"> <a href="{{ path('new_admin') }}" type="button"  ><i class="fas fa-plus-circle fa-2x"></i> </a></div>
 
-        <form method="post" >
+        <form method="post" action="{{ path('searchadmin') }}">
             <div class="input-group mb-3">
 
                 <input type="text" class="form-control" name="search" placeholder="Recipient's username" >

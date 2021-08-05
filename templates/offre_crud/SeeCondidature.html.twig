@@ -4,15 +4,7 @@
 
         <h1 style="text-align: center;"><span style="color: #ffffff;"><strong>Offres Requests</strong></span></h1>
 
-        <form method="post" >
-            <div class="input-group mb-3">
 
-                <input type="text" class="form-control" name="search" placeholder="Recipient's username" >
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
-                </div>
-            </div>
-        </form>
     </div>
 
 
@@ -25,9 +17,9 @@
 
 
             <th>Libele</th>
-            <th>categorie</th>
-            <th>Date debut</th>
-            <th>Date fin</th>
+            <th>Request Sender</th>
+
+
 
 
 
@@ -38,9 +30,9 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.libele }}</td>
-                <td>{{ user.categorie }}</td>
-                <td>{{ user.datedebut | date }}</td>
-                <td>{{ user.datefin | date }}</td>
+                <td>{{ user.idclient  }}</td>
+
+
 
                 <td style="text-align: center">
                     <a href="{{ path('DetailCondidature', {'id': user.id}) }}" class="btn btn-info">show Detail</a>
