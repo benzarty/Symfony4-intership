@@ -149,7 +149,7 @@ class OffreCrudController extends AbstractController
      */
     public function DetailCondidature(Offre $user): Response
     {
-        return $this->render('offre_crud/show.html.twig', [
+        return $this->render('offre_crud/ShowCondidaturedetail.html.twig', [
             'user' => $user,
         ]);
     }

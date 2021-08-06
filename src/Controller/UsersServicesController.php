@@ -32,7 +32,15 @@ class UsersServicesController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/PasswordForgottenno", name="PasswordForgottenno", methods={"GET"})
+     */
+    public function PasswordForgottenno(): Response
+    {
 
+        return $this->render('users_services/ResetPassword.html.twig'
+        );
+    }
 
     /**
      * @Route("/showdetailuseroffre/{id}", name="showdetailuseroffre", methods={"GET"})
