@@ -28,7 +28,6 @@ class SecurityController extends AbstractController
     }
 
 
-
     /**
      * @Route("/users/services", name="users_services")
      */
@@ -87,11 +86,12 @@ class SecurityController extends AbstractController
 
 
     }
+
     /**
      * @Route("/RegisterUsersnow", name="RegisterUsersnow")
      * Method({"GET", "POST"})
      */
-    public function registerusernow(Request $request, UserPasswordEncoderInterface $encoder)
+    public function registerusernow(Request $request, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer)
     {
         $article = new Users();
         $form = $this->createForm(UsersType::class, $article);
@@ -113,8 +113,6 @@ class SecurityController extends AbstractController
             $article->setPhoto($fileName);
 
 
-
-
             $hash = $encoder->encodePassword($article, $article->getPassword());
             $article->setPassword($hash);
 
@@ -125,11 +123,27 @@ class SecurityController extends AbstractController
             $entityManager->persist($article);
             $entityManager->flush();
             $this->addFlash('info', 'Your request has been added succesfully !!');
+
+
+            $message = (new \Swift_Message('Registration Email'))
+                ->setFrom('m.benzarti.1996@gmail.com')
+                ->setTo($article->getEmail())
+                ->setBody(
+                    $this->renderView(
+                    // templates/emails/registration.html.twig
+                        'users_services/registrationMail.html.twig'
+
+                    ),
+                    'text/html'
+                );
+
+            $mailer->send($message);
+
+
             return $this->redirectToRoute('RegisterUsersnow');
         }
         return $this->render('users_services/RegisterUsers.html.twig', ['form' => $form->createView()]);
     }
-
 
 
 }

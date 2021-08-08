@@ -14,6 +14,21 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use App\Entity\Administrateur;
+use App\Entity\Apprenant;
+use App\Entity\Formation;
+
+use App\Form\AdminFomType;
+use App\Form\ProfesseurType;
+
+use Egulias\EmailValidator\Validation\RFCValidation;
+
+
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
+
 class UsersServicesController extends AbstractController
 {
 
@@ -115,6 +130,56 @@ class UsersServicesController extends AbstractController
 
 
 
+    /**
+     * @Route("/email2",name="email2")
+     */
+
+    public function SendMail(\Swift_Mailer $mailer)
+    {
+
+
+        $message = (new \Swift_Message('Notification Email'))
+            ->setFrom('m.benzarti.1996@gmail.com')
+            ->setTo('m.benzarti.1996@gmail.com')
+            ->setBody(
+                $this->renderView(
+                // templates/emails/registration.html.twig
+                    'users_services/registrationMail.html.twig'
+                ),
+                'text/html'
+            );
+
+        $mailer->send($message);
+
+        return $this->render('admin_services/backendAdmin.html.twig');
+    }
+
+    /**
+     * @Route("/email",name="email")
+     */
+
+
+    public function mailnow(\Swift_Mailer $mailer)
+    {
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('m.benzarti.1996@gmail.com')
+            ->setTo('m.benzarti.1996@gmail.com')
+            ->setBody(
+                $this->renderView(
+                // templates/emails/registration.html.twig
+                    'users_services/registrationMail.html.twig'
+
+                ),
+                'text/html'
+            )
+
+
+        ;
+
+        $mailer->send($message);
+
+        return $this->render('admin_services/backendAdmin.html.twig');
+    }
 
 
 
