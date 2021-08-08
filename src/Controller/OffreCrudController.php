@@ -58,7 +58,11 @@ class OffreCrudController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
 
-            //$file = $article->getPhoto();
+            $file = $form->get('photo')->getData();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('imagedirectory'), $fileName);
+            $article->setPhoto($fileName);
 
             $article = $form->getData();
 
@@ -86,8 +90,11 @@ class OffreCrudController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('photo')->getData();
 
-
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('imagedirectory'), $fileName);
+            $article->setPhoto($fileName);
 
 
             $article = $form->getData();

@@ -43,6 +43,14 @@ class Offre
 
 
 
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="photo", type="string", length=300, nullable=true)
+     * @Assert\File(mimeTypes={"image/jpeg"},groups = {"create"})
+     */
+    private $photo;
+
 
     /**
      * @var string
@@ -193,7 +201,17 @@ class Offre
 
         return $this;
     }
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
 
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
 
 
 }

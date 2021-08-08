@@ -50,10 +50,10 @@ class AdminsCrudController extends AbstractController
 
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
             $file->move($this->getParameter('imagedirectory'), $fileName);
-
+            $article->setPhoto($fileName);
             $hash = $encoder->encodePassword($article, $article->getPassword());
             $article->setPassword($hash);
-            $article->setPhoto($fileName);
+
 
 
             $article = $form->getData();
