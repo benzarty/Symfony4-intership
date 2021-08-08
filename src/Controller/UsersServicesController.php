@@ -110,6 +110,7 @@ class UsersServicesController extends AbstractController
 
 
             $article->setCv($fileName);
+            $article->setStatus(0);
 
 
             $article = $form->getData();

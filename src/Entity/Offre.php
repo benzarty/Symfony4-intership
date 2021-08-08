@@ -76,6 +76,13 @@ class Offre
     private $description;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer" , nullable=true)
+     */
+    private $status;
+
+    /**
      * @var string|null
      *
      * @ORM\Column(name="cv", type="string", length=300, nullable=true)
@@ -211,6 +218,22 @@ class Offre
         $this->photo = $photo;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus(int $status): void
+    {
+        $this->status = $status;
     }
 
 
