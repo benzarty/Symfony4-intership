@@ -161,5 +161,57 @@ class OffreCrudController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/acceptcondidature/{id}", name="acceptcondidature", methods={"GET","POST"})
+     * Method({"GET", "POST"})
+     */
+    public function acceptcondidature(Request $request, $id, UserPasswordEncoderInterface $encoder,\Swift_Mailer $mailer)
+    {
+        $article = $this->getDoctrine()->getRepository(Offre::class)->find($id);
 
+$article2=$article->getIdclient();
+
+        $article->setStatus(1);
+
+        $article2 = $this->getDoctrine()->getRepository(Users::class)->find($article2);
+
+
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+
+
+        $message = (new \Swift_Message('Request approval'))
+            ->setFrom('m.benzarti.1996@gmail.com')
+            ->setTo($article2->getEmail())
+            ->setBody(
+                $this->renderView(
+                // templates/emails/registration.html.twig
+                    'users_services/registrationMail.html.twig'
+
+                ),
+                'text/html'
+            );
+
+        $mailer->send($message);
+
+
+        return $this->redirectToRoute('seecondidatures');
+
+
+
+
+
+
+
+
+
+
+
+
+            return $this->redirectToRoute('seecondidatures');
+
+    }
 }
