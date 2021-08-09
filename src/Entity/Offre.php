@@ -75,6 +75,28 @@ class Offre
      */
     private $description;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="q1", type="string", length=50, nullable=true)
+     */
+    private $q1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="q2", type="string", length=50, nullable=true)
+     */
+    private $q2;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="q3", type="integer", length=50, nullable=true)
+     */
+    private $q3;
+
     /**
      * @var int
      *
@@ -234,6 +256,54 @@ class Offre
     public function setStatus(int $status): void
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getQ1(): ?string
+    {
+        return $this->q1;
+    }
+
+    /**
+     * @param string $q1
+     */
+    public function setQ1(string $q1): void
+    {
+        $this->q1 = $q1;
+    }
+
+    /**
+     * @return string
+     */
+    public function getQ2(): ?string
+    {
+        return $this->q2;
+    }
+
+    /**
+     * @param string $q2
+     */
+    public function setQ2(string $q2): void
+    {
+        $this->q2 = $q2;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQ3(): ?int
+    {
+        return $this->q3;
+    }
+
+    /**
+     * @param int $q3
+     */
+    public function setQ3(int $q3): void
+    {
+        $this->q3 = $q3;
     }
 
 

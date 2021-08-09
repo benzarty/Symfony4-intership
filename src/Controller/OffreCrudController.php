@@ -137,16 +137,59 @@ class OffreCrudController extends AbstractController
         ]);
     }
 
+
+
+    /**
+     * @Route("/acceptedRequestsview", name="acceptedRequestsview", methods={"GET","POST"})
+     */
+    public function acceptedRequestsview(): Response
+    {
+
+        $users = $this->getDoctrine()->getRepository(Offre::class)->findBy(['status' => 1]);
+
+
+
+
+        return $this->render('admin_services/AcceptedRequests.html.twig', [
+            'users' => $users,
+        ]);
+    }
+
+
     /**
      * @Route("condidatureeee_crud_delete/{id}", name="condidatureeee_crud_delete", methods={"POST"})
      */
-    public function deleteCondidature(Request $request, Offre $user): Response
+    public function deleteCondidature(Request $request, Offre $user,\Swift_Mailer $mailer,$id): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+
+        $article = $this->getDoctrine()->getRepository(Offre::class)->find($id);
+        $article2=$article->getIdclient();
+
+
+
+        $article2 = $this->getDoctrine()->getRepository(Users::class)->find($article2);
+
+
+
+
+        $message = (new \Swift_Message('Request Denied'))
+            ->setFrom('m.benzarti.1996@gmail.com')
+            ->setTo($article2->getEmail())
+            ->setBody(
+                $this->renderView(
+                // templates/emails/registration.html.twig
+                    'users_services/NoacceptMail.html.twig'
+
+                ),
+                'text/html'
+            );
+
+        $mailer->send($message);
+
+
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($user);
+            $entityManager->remove($article);
             $entityManager->flush();
-        }
 
         return $this->redirectToRoute('seecondidatures', [], Response::HTTP_SEE_OTHER);
     }
@@ -169,13 +212,13 @@ class OffreCrudController extends AbstractController
     {
         $article = $this->getDoctrine()->getRepository(Offre::class)->find($id);
 
-$article2=$article->getIdclient();
+      $article2=$article->getIdclient();
 
-        $article->setStatus(1);
+
 
         $article2 = $this->getDoctrine()->getRepository(Users::class)->find($article2);
 
-
+        $article->setStatus(1);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
@@ -189,7 +232,7 @@ $article2=$article->getIdclient();
             ->setBody(
                 $this->renderView(
                 // templates/emails/registration.html.twig
-                    'users_services/registrationMail.html.twig'
+                    'users_services/acceptMail.html.twig'
 
                 ),
                 'text/html'
@@ -213,5 +256,15 @@ $article2=$article->getIdclient();
 
             return $this->redirectToRoute('seecondidatures');
 
+    }
+
+    /**
+     * @Route("/AcceptedRequestsShow/{id}", name="AcceptedRequestsShow", methods={"GET"})
+     */
+    public function AcceptedRequestsShow(Offre $user): Response
+    {
+        return $this->render('admin_services/DetailAcceptedRequests.html.twig', [
+            'user' => $user,
+        ]);
     }
 }
