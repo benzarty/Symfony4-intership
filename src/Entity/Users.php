@@ -73,6 +73,17 @@ class Users implements UserInterface
      */
     private $prenom;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
+
+     * )
+     *@Assert\NotBlank(message="Vous devez remplir ce champs")
+     */
+    private $phone;
+
     /**
      * @var string|null
      *
@@ -275,7 +286,7 @@ class Users implements UserInterface
 
     public function __toString(){
         // to show the name of the Category in the select
-        return $this->nom . "   " . $this->prenom. ".His email : " .$this->email ;
+        return $this->nom . "   " . $this->prenom. ".His email : " .$this->email . ".Phone number : " .$this->phone ;
         // to show the id of the Category in the select
         // return $this->id;
     }
@@ -294,6 +305,18 @@ class Users implements UserInterface
     public function setCodesecurity(int $codesecurity): void
     {
         $this->codesecurity = $codesecurity;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
     }
 
 }

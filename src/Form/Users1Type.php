@@ -19,6 +19,7 @@ class Users1Type extends AbstractType
             ->add('email')
             ->add('password')
             ->add('status')
+            ->add('phone')
         ;
     }
 

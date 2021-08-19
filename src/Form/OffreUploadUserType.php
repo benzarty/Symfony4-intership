@@ -19,11 +19,12 @@ class OffreUploadUserType extends AbstractType
     {
         $builder
             ->add('cv', FileType::class, ['mapped' => false])
-            ->add('q1',TextType::class,['label' => 'why did you choose this company ?',
+            ->add('q1',TextType::class,['label' => '
+Pourquoi vous avez choisie cette entreprise ?',
                 'attr' => ['placeholder' => 'please write a reason']])
-            ->add('q2',TextType::class,['label' => 'did you ever worked in similar job and what is the operation ? ',
+            ->add('q2',TextType::class,['label' => 'Avez-vous déjà travaillé dans un emploi similaire et dans quelle opération ?',
                 'attr' => ['placeholder' => 'please write a reason']])
-            ->add('q3',TextType::class,['label' => 'For how long have you been working there ?',
+            ->add('q3',TextType::class,['label' => 'Depuis combien de temps y travaillez-vous ?',
                 'attr' => ['placeholder' => 'please write a number(monthes)']]);
     }
 
